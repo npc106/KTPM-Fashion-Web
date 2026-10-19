@@ -1,0 +1,87 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Environment files and secrets
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# Build output
+dist/
+build/
+out/
+.next/
+.nuxt/
+.svelte-kit/
+.vite/
+coverage/
+.nyc_output/
+
+# Logs and runtime data
+*.log
+logs/
+*.pid
+*.pid.lock
+*.seed
+
+# Package-manager caches
+.npm/
+.yarn/cache/
+.yarn/unplugged/
+.yarn/install-state.gz
+.pnpm-store/
+
+# Test and tooling caches
+.cache/
+.eslintcache
+.stylelintcache
+.parcel-cache/
+.turbo/
+.vercel/
+.netlify/
+
+# TypeScript incremental build files
+*.tsbuildinfo
+
+# Local databases and uploaded files
+*.sqlite
+*.sqlite3
+*.db
+uploads/
+
+# IDE and editor settings
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+*.iml
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Operating-system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Optional .NET artifacts, if an API is added to this project
+bin/
+obj/
+[Bb]uild/
+[Dd]ebug/
+[Rr]elease/
+TestResults/
+*.nupkg
