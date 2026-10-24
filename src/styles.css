@@ -1,0 +1,383 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap");
+
+:root {
+  color: #24322e;
+  background: #f4f6f2;
+  font-family: "DM Sans", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.auth-shell {
+  display: grid;
+  grid-template-columns: minmax(360px, 0.9fr) minmax(480px, 1.1fr);
+  min-height: 100vh;
+}
+
+.brand-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: clamp(32px, 6vw, 88px);
+  color: #f9faf6;
+  background:
+    linear-gradient(145deg, rgba(17, 70, 57, 0.85), rgba(10, 44, 38, 0.9)),
+    radial-gradient(circle at 70% 22%, #d9b77b 0, transparent 22%),
+    #174b3e;
+}
+
+.brand-panel::after {
+  position: absolute;
+  right: -18%;
+  bottom: -18%;
+  width: 450px;
+  height: 450px;
+  border: 1px solid rgba(237, 222, 188, 0.3);
+  border-radius: 50%;
+  box-shadow: 0 0 0 45px rgba(237, 222, 188, 0.05), 0 0 0 90px rgba(237, 222, 188, 0.05);
+  content: "";
+}
+
+.brand-mark {
+  z-index: 1;
+  display: grid;
+  width: 58px;
+  height: 58px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  font-family: "Playfair Display", serif;
+  font-size: 23px;
+}
+
+.brand-copy {
+  z-index: 1;
+  margin-top: auto;
+  margin-bottom: 20vh;
+}
+
+.brand-name {
+  margin: 0;
+  color: #e6c991;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+}
+
+.brand-tagline {
+  max-width: 360px;
+  margin: 16px 0 0;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(38px, 5vw, 66px);
+  line-height: 1.08;
+}
+
+.brand-note {
+  z-index: 1;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  max-width: 290px;
+  color: rgba(249, 250, 246, 0.7);
+  font-size: 14px;
+}
+
+.brand-note span {
+  color: #e6c991;
+  font-family: Georgia, serif;
+  font-size: 46px;
+  line-height: 0.7;
+}
+
+.form-panel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 8vw;
+  background: #f9faf7;
+}
+
+.language-toggle {
+  position: absolute;
+  top: 32px;
+  right: 8vw;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 14px;
+  border: 1px solid #d8dfd8;
+  border-radius: 999px;
+  color: #416258;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.form-content {
+  width: min(100%, 450px);
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: #b18745;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  color: #1e312a;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(35px, 4vw, 52px);
+  font-weight: 500;
+  line-height: 1.12;
+}
+
+.subtitle {
+  max-width: 390px;
+  margin: 18px 0 42px;
+  color: #71817a;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+form {
+  display: grid;
+  gap: 25px;
+}
+
+.field {
+  display: grid;
+  gap: 10px;
+}
+
+label,
+.label-row {
+  color: #304d43;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  width: 100%;
+  padding: 15px 16px;
+  border: 1px solid #d6dfd8;
+  border-radius: 8px;
+  outline: none;
+  color: #20352e;
+  background: #fff;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+input:focus {
+  border-color: #2c715c;
+  box-shadow: 0 0 0 3px rgba(44, 113, 92, 0.12);
+}
+
+input[aria-invalid="true"] {
+  border-color: #bd6a5d;
+}
+
+input::placeholder {
+  color: #a5b0ab;
+}
+
+.password-input {
+  position: relative;
+}
+
+.password-input input {
+  padding-right: 48px;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  width: 24px;
+  padding: 0;
+  transform: translateY(-50%);
+  border: 0;
+  color: #789088;
+  background: transparent;
+}
+
+.text-button {
+  padding: 0;
+  border: 0;
+  color: #2c715c;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.text-button:hover {
+  color: #174b3e;
+  text-decoration: underline;
+}
+
+.field-error {
+  margin: -2px 0 0;
+  color: #a84f45;
+  font-size: 12px;
+}
+
+.checkbox-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: #6f8078;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.checkbox-row input {
+  width: 16px;
+  height: 16px;
+  accent-color: #2c715c;
+}
+
+.submit-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 16px 20px;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  background: #1d5c4b;
+  font-size: 14px;
+  font-weight: 700;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.submit-button:hover:not(:disabled) {
+  background: #174b3e;
+  transform: translateY(-1px);
+}
+
+.submit-button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.feedback {
+  margin: -4px 0 0;
+  padding: 12px 14px;
+  border-radius: 7px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.feedback.success {
+  color: #21654e;
+  background: #e4f2e9;
+}
+
+.feedback.error {
+  color: #9f4f44;
+  background: #f9e9e6;
+}
+
+.register-prompt {
+  margin: 28px 0 0;
+  color: #77857f;
+  font-size: 13px;
+  text-align: center;
+}
+
+.register-button {
+  font-size: 13px;
+}
+
+.demo-note {
+  display: grid;
+  gap: 5px;
+  margin-top: 34px;
+  padding: 13px 15px;
+  border-left: 3px solid #d4ae6b;
+  color: #71817a;
+  background: #f1f4ef;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.demo-note strong {
+  color: #446357;
+  font-size: 12px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  .auth-shell {
+    display: block;
+  }
+
+  .brand-panel {
+    min-height: 260px;
+    padding: 28px;
+  }
+
+  .brand-copy {
+    margin: 34px 0 0;
+  }
+
+  .brand-tagline {
+    font-size: 36px;
+  }
+
+  .brand-note {
+    display: none;
+  }
+
+  .form-panel {
+    min-height: calc(100vh - 260px);
+    padding: 76px 28px 40px;
+  }
+
+  .language-toggle {
+    top: 26px;
+    right: 28px;
+  }
+}
