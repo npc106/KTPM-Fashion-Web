@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { login } from "./features/auth/auth.api";
 import type { LoginRequest } from "./features/auth/auth.types";
 import { validateLogin } from "./features/auth/auth.validation";
+import CatalogPage from "./features/catalog/CatalogPage";
 
 const initialValues: LoginRequest = {
   email: "",
@@ -21,6 +22,7 @@ function App() {
     { type: "success" | "error"; message: string } | undefined
   >();
   const [showPassword, setShowPassword] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   function updateField(field: keyof LoginRequest, value: string | boolean) {
     setValues((current) => ({ ...current, [field]: value }));
@@ -41,6 +43,7 @@ function App() {
     setIsSubmitting(true);
     try {
       await login(values);
+      setIsAuthenticated(true);
       setFeedback({ type: "success", message: t("success") });
     } catch {
       setFeedback({ type: "error", message: t("invalidCredentials") });
@@ -54,6 +57,10 @@ function App() {
     void i18n.changeLanguage(nextLanguage);
     localStorage.setItem("language", nextLanguage);
     document.documentElement.lang = nextLanguage;
+  }
+
+  if (isAuthenticated) {
+    return <CatalogPage onLogout={() => setIsAuthenticated(false)} />;
   }
 
   return (
@@ -71,7 +78,11 @@ function App() {
       </section>
 
       <section className="form-panel">
-        <button className="language-toggle" type="button" onClick={toggleLanguage}>
+        <button
+          className="language-toggle"
+          type="button"
+          onClick={toggleLanguage}
+        >
           <span aria-hidden="true">◎</span>
           {i18n.language === "vi" ? "EN" : "VI"}
           <span className="sr-only">{t("language")}</span>
@@ -96,7 +107,11 @@ function App() {
                 aria-invalid={Boolean(errors.email)}
                 aria-describedby={errors.email ? "email-error" : undefined}
               />
-              {errors.email && <p className="field-error" id="email-error">{errors.email}</p>}
+              {errors.email && (
+                <p className="field-error" id="email-error">
+                  {errors.email}
+                </p>
+              )}
             </div>
 
             <div className="field">
@@ -114,27 +129,39 @@ function App() {
                   autoComplete="current-password"
                   placeholder={t("passwordPlaceholder")}
                   value={values.password}
-                  onChange={(event) => updateField("password", event.target.value)}
+                  onChange={(event) =>
+                    updateField("password", event.target.value)
+                  }
                   aria-invalid={Boolean(errors.password)}
-                  aria-describedby={errors.password ? "password-error" : undefined}
+                  aria-describedby={
+                    errors.password ? "password-error" : undefined
+                  }
                 />
                 <button
                   className="password-toggle"
                   type="button"
                   onClick={() => setShowPassword((visible) => !visible)}
-                  aria-label={showPassword ? t("hidePassword") : t("showPassword")}
+                  aria-label={
+                    showPassword ? t("hidePassword") : t("showPassword")
+                  }
                 >
                   {showPassword ? "◉" : "◌"}
                 </button>
               </div>
-              {errors.password && <p className="field-error" id="password-error">{errors.password}</p>}
+              {errors.password && (
+                <p className="field-error" id="password-error">
+                  {errors.password}
+                </p>
+              )}
             </div>
 
             <label className="checkbox-row">
               <input
                 type="checkbox"
                 checked={values.rememberMe}
-                onChange={(event) => updateField("rememberMe", event.target.checked)}
+                onChange={(event) =>
+                  updateField("rememberMe", event.target.checked)
+                }
               />
               <span>{t("remember")}</span>
             </label>
@@ -145,7 +172,11 @@ function App() {
               </p>
             )}
 
-            <button className="submit-button" type="submit" disabled={isSubmitting}>
+            <button
+              className="submit-button"
+              type="submit"
+              disabled={isSubmitting}
+            >
               {isSubmitting ? t("loading") : t("submit")}
               {!isSubmitting && <span aria-hidden="true">→</span>}
             </button>
